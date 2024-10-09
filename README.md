@@ -123,6 +123,8 @@ Thanks for checking out our submission for the **NASA Space Apps Challenge 2024*
 
 - **Tomás Pérez Vellarino** - (https://github.com/Tomypv)
 
+- **Álvaro Sánchez Moro** - (https://github.com/smalvaro)
+
 - **David Sánchez Sánchez** - (https://github.com/DavidSanSan110)
 
 ---
