@@ -1,0 +1,5 @@
+/*/.venv
+/*/build
+/*/api_satellite.egg-info
+/*/api_detector.egg-info
+/*/node_modules

@@ -1,0 +1,36 @@
+name: NASA-Deploy
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  check_out:
+    name: CheckOut
+    runs-on: [self-hosted, linux]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+  docker_clean:
+    name: Docker Clean
+    runs-on: [self-hosted, linux]
+    needs: check_out
+    steps:
+      - name: Stop Docker Containers
+        run: docker compose -f "docker-compose.yml" down
+        continue-on-error: true
+      - name: Remove Docker Containers
+        run: docker container prune -f
+        continue-on-error: true
+      - name: Remove Docker Images
+        run: docker image prune -f
+        continue-on-error: true
+
+  docker_compose:
+    name: Docker Compose
+    runs-on: [self-hosted, linux]
+    needs: docker_clean
+    steps:
+      - name: Build Docker Compose
+        run: docker compose -f "docker-compose.yml" up --build -d
